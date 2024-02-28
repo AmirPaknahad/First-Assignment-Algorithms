@@ -14,8 +14,21 @@ public class Exercises2 {
     */
 
     public int[] twoSum(int[] nums, int target) {
-        // TODO
-        return null;
+        int[] resArray = new int[2];
+        boolean flag = false;
+        for (int i = 0; i < nums.length; i++){
+            for (int j = i + 1; j < nums.length; j++){
+                if (nums[i] + nums[j] == target){
+                    resArray[0] = i;
+                    resArray[1] = j;
+                    flag = true;
+                    break;
+                }
+            }
+            if (flag)
+                break;
+        }
+        return resArray;
     }
 
     /*
