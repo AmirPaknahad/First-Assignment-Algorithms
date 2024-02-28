@@ -62,8 +62,65 @@ public class Exercises2 {
     */
 
     public int romanToInt(String s) {
-        // TODO
-        return 0;
+        int sum = 0;
+        int size = s.length();
+        for (int i = 0; i < size; i++){
+            if (s.charAt(i) == 'I') {
+                if (i < size - 1) {
+                    if (s.charAt(i + 1) == 'V') {
+                        i++;
+                        sum += 4;
+                    } else if (s.charAt(i + 1) == 'X') {
+                        i++;
+                        sum += 9;
+                    } else
+                        sum += 1;
+                }
+                else
+                    sum += 1;
+            }
+            else if (s.charAt(i) == 'V'){
+                sum += 5;
+            }
+            else if (s.charAt(i) == 'X'){
+                if (i < size - 1) {
+                    if (s.charAt(i + 1) == 'L') {
+                        i++;
+                        sum += 40;
+                    } else if (s.charAt(i + 1) == 'C') {
+                        i++;
+                        sum += 90;
+                    } else
+                        sum += 10;
+                }
+                else
+                    sum += 10;
+            }
+            else if (s.charAt(i) == 'L'){
+                sum += 50;
+            }
+            else if (s.charAt(i) == 'C'){
+                if (i < size - 1) {
+                    if (s.charAt(i + 1) == 'D') {
+                        i++;
+                        sum += 400;
+                    } else if (s.charAt(i + 1) == 'M') {
+                        i++;
+                        sum += 900;
+                    } else
+                        sum += 100;
+                }
+                else
+                    sum += 100;
+            }
+            else if (s.charAt(i) == 'D'){
+                sum += 500;
+            }
+            else if (s.charAt(i) == 'M'){
+                sum += 1000;
+            }
+        }
+        return sum;
     }
 
     /*
