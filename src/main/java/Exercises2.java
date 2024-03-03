@@ -128,9 +128,32 @@ public class Exercises2 {
     You can return the answer in any order.
     */
 
+    static void swap(int[] nums, int a, int b) {
+        int temp = nums[a];
+        nums[a] = nums[b];
+        nums[b] = temp;
+    }
+
+    static void generatePermutations(int[] nums, int n, List<List<Integer>> res) {
+        if (n == 1) {
+            List<Integer> permutation = new ArrayList<>();
+            for (int num: nums) {
+                permutation.add(num);
+            }
+            res.add(permutation);
+        }
+
+        for (int i = 0; i < n; i++) {
+            swap(nums, i, n - 1);
+            generatePermutations(nums, n - 1, res);
+            swap(nums, i, n - 1);
+        }
+    }
+
     public List<List<Integer>> permute(int[] nums) {
-        // TODO
-        return null;
+        List<List<Integer>> res = new ArrayList<>();
+        generatePermutations(nums, nums.length, res);
+        return res;
     }
 
     public static void main(String[] args) {
